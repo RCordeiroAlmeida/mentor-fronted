@@ -6,6 +6,9 @@ import AppLayout from '@/components/layouts/AppLayout.vue'
 import AgendaView from '@/views/AgendaView.vue'
 import FinanceiroView from '@/views/FinanceiroView.vue'
 import CadastroView from '@/views/CadastroView.vue'
+import PacientesView from '@/views/cadastro/PacientesView.vue'
+import ProfissionaisView from '@/views/cadastro/ProfissionaisView.vue'
+import SalasView from '@/views/cadastro/SalasView.vue'
 
 const routes = [
   {
@@ -39,7 +42,24 @@ const routes = [
       {
         path: '/cadastros',
         name: 'Cadastro',
-        component: CadastroView
+        component: CadastroView,
+        children: [
+          {
+            path: 'pacientes',
+            name: 'Cadastro mínimo de paciente (CMP)',
+            component: PacientesView
+          },
+          {
+            path: 'profissionais',
+            name: 'Cadastro de Profissional',
+            component: ProfissionaisView
+          },
+          {
+            path: 'salas',
+            name: 'Cadastro de Salas',
+            component: SalasView
+          },
+        ]
       },
 
 

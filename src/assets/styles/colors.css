@@ -1,12 +1,23 @@
  :root {
-  --primary: #6b35e8;
-  --primary-hover: #3f13a4;
+  --primary: #6b35e8 !important;
+  --primary-hover: #3f13a4 !important;
   --black: #050505;
   --gray: #595959;
   --white: #fafafa;
   --success: #7BAE7F;
   --danger: #FF4B4B;
   --warning: #F8BF63;
+
+  .btn-custom-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: var(--white);
+  }
+
+  .btn-custom-primary:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+  }
 }
 
  /* :root {

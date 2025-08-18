@@ -38,6 +38,7 @@
     <div class="text-center mt-3">
       <a href="#" class="text-decoration-none">Esqueci minha senha</a>
     </div>
+
   </div>
 </template>
 
