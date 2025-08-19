@@ -66,10 +66,11 @@ import {
   CalendarDays,
   HandCoins,
   LogOut,
-  FileUser,
   ChevronRight,
   ChevronDown,
-  ChevronLeft
+  ChevronLeft,
+  ClipboardPlusIcon,
+  Pencil
 } from 'lucide-vue-next'
 
 const isCollapsed = ref(false);
@@ -91,8 +92,13 @@ const mainMenuItems = ref([
     icon: HandCoins,
   },
   {
+    path: '/prontuario',
+    label: 'Prontuário',
+    icon: ClipboardPlusIcon
+  },
+  {
     label: 'Cadastro',
-    icon: FileUser,
+    icon: Pencil,
     isOpen: false,
     children: [
       {
@@ -106,6 +112,10 @@ const mainMenuItems = ref([
       {
         path: '/cadastros/salas',
         label: 'Salas',
+      },
+      {
+        path: '/cadastros/servicos',
+        label: 'Serviços',
       },
     ]
   },

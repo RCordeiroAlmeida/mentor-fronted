@@ -18,6 +18,19 @@
     background-color: var(--primary-hover);
     border-color: var(--primary-hover);
   }
+
+  .btn-custom-outlined {
+  background-color: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  transition: all 0.3s ease;
+  }
+
+  .btn-custom-outlined:hover {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: var(--white);
+  }
 }
 
  /* :root {

@@ -9,6 +9,8 @@ import CadastroView from '@/views/CadastroView.vue'
 import PacientesView from '@/views/cadastro/PacientesView.vue'
 import ProfissionaisView from '@/views/cadastro/ProfissionaisView.vue'
 import SalasView from '@/views/cadastro/SalasView.vue'
+import ProntuarioView from '@/views/ProntuarioView.vue'
+import ServicosView from '@/views/cadastro/ServicosView.vue'
 
 const routes = [
   {
@@ -40,6 +42,11 @@ const routes = [
         component: FinanceiroView
       },
       {
+        path: '/prontuario',
+        name: 'Prontuário',
+        component: ProntuarioView
+      },
+      {
         path: '/cadastros',
         name: 'Cadastro',
         component: CadastroView,
@@ -58,6 +65,11 @@ const routes = [
             path: 'salas',
             name: 'Cadastro de Salas',
             component: SalasView
+          },
+          {
+            path: 'servicos',
+            name: 'Cadastro de Serviços prestados',
+            component: ServicosView
           },
         ]
       },
