@@ -148,6 +148,12 @@ const toggleSubmenu = (item) => {
 </script>
 
 <style scoped>
+.menu-link.router-link-active,
+.submenu-link.router-link-active {
+  background-color: rgba(255, 255, 255, 0.2); /* destaque do ativo */
+  font-weight: 600;
+}
+
 aside {
   transition: width 0.3s ease;
   width: 250px;
