@@ -8,22 +8,18 @@
             type="text"
             class="form-control rounded-pill"
             placeholder="Nome completo"
-            v-model="profissional.nome"
+            v-model="profissional.name"
             required
           />
         </div>
 
         <!-- Especialidade -->
         <div class="form-group mb-3">
-          <select
-            class="form-control rounded-pill"
-            v-model="profissional.especialidade"
-            required
-          >
+          <select class="form-control rounded-pill" v-model="profissional.especialidade" required>
             <option value="">Selecione a especialidade</option>
-            <option value="psicologia">Psicologia</option>
-            <option value="psiquiatria">Psiquiatria</option>
-            <option value="terapia_ocupacional">Terapia Ocupacional</option>
+            <option value="1">Psicologia</option>
+            <option value="2">Psiquiatria</option>
+            <option value="3">Terapia Ocupacional</option>
           </select>
         </div>
 
@@ -84,38 +80,41 @@
         </div>
 
         <!-- Botão de submit -->
-        <button type="submit" class="btn btn-custom-primary rounded-pill w-100">
-          Cadastrar
-        </button>
+        <button type="submit" class="btn btn-custom-primary rounded-pill w-100">Cadastrar</button>
       </form>
     </div>
   </div>
 </template>
 
-<script>
-import { mask } from 'vue-the-mask'
+<script setup>
+import axios from 'axios'
+import { reactive } from 'vue'
 
-export default {
-  directives: { mask },
-  data() {
-    return {
-      profissional: {
-        nome: '',
-        especialidade: '',
-        registro_profissional: '',
-        cnpj: '',
-        telefone: '',
-        email: '',
-        endereco_consultorio: '',
-        disponibilidade: ''
-      }
-    }
-  },
-  methods: {
-    handleSubmit() {
-      // Lógica para enviar os dados do profissional
-      console.log('Dados do profissional:', this.profissional)
-    }
+const profissional = reactive({
+  name: '',
+  especialidade: '',
+  registro_profissional: '',
+  cnpj: '',
+  telefone: '',
+  email: '',
+  disponibilidade: '',
+})
+
+console.log(profissional);
+
+const handleSubmit = async () => {
+  try {
+    await axios.post('http://127.0.0.1:8000/api/profissionais', {
+      ...profissional,
+    })
+
+    alert('Profissional cadastrado')
+
+    //limpa formulário
+    Object.keys(profissional).forEach((k) => (profissional[k] = ''))
+  } catch (error) {
+    console.error(error.response?.data || error.message)
+    alert('Erro ao cadastrar')
   }
 }
 </script>

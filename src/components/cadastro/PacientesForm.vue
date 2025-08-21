@@ -4,17 +4,18 @@
       <form @submit.prevent="handleSubmit" class="p-3">
         <!-- Nome completo -->
         <div class="form-group mb-3">
+          <label for="nome" class="ps-2 pb-1">Nome Completo:</label>
           <input
-            type="text"
-            class="form-control rounded-pill"
-            placeholder="Nome completo"
-            v-model="paciente.name"
-            required
+          type="text"
+          class="form-control rounded-pill"
+          v-model="paciente.name"
+          required
           />
         </div>
 
         <!-- Data de nascimento + idade -->
         <div class="form-group mb-3">
+          <label for="data_nascimento" class="ps-2 pb-1">Data de nascimento:</label>
           <input
             type="date"
             class="form-control rounded-pill"
@@ -22,37 +23,37 @@
             @change="calcularIdade"
             required
           />
-          <small v-if="idade !== null" class="text-muted">Idade: {{ idade }} anos</small>
+          <small v-if="idade !== null" class="text-muted align-end">Idade: {{ idade }} anos</small>
         </div>
 
         <!-- Campos extras se menor de idade -->
         <div v-if="idade !== null && idade < 18" class="mb-3 p-3">
           <h5 class="mb-3">Responsáveis</h5>
           <div class="form-group mb-3">
+            <label for="nome_pai" class="ps-2 pb-1">Nome do pai:</label>
             <input
               type="text"
               class="form-control rounded-pill"
-              placeholder="Nome do Pai"
               v-model="paciente.nome_pai"
             />
           </div>
 
           <div class="form-group mb-3">
+            <label for="nome_mae" class="ps-2 pb-1">Nome da mãe:</label>
             <input
               type="text"
               class="form-control rounded-pill"
-              placeholder="Nome da Mãe"
               v-model="paciente.nome_mae"
             />
           </div>
         </div>
 
         <!-- Email -->
+        <label for="email" class="ps-2 pb-1">E-mail:</label>
         <div class="form-group mb-3">
           <input
             type="email"
             class="form-control rounded-pill"
-            placeholder="E-mail"
             v-model="paciente.email"
             required
           />
@@ -60,10 +61,10 @@
 
         <!-- Telefone -->
         <div class="form-group mb-3">
+          <label for="telefone" class="ps-2 pb-1">Telefone:</label>
           <input
             type="tel"
             class="form-control rounded-pill"
-            placeholder="Telefone"
             v-model="paciente.telefone"
             v-mask="['(##) ####-####', '(##) #####-####']"
             required
@@ -72,6 +73,7 @@
 
         <!-- Endereço -->
         <div class="form-group mb-3">
+          <label for="endereco" class="ps-2 pb-1">Endereço</label>
           <input
             type="text"
             class="form-control rounded-pill"
@@ -82,6 +84,7 @@
 
         <!-- CPF -->
         <div class="form-group mb-4">
+          <label for="cpf" class="ps-2 pb-1">CPF:</label>
           <input
             type="text"
             class="form-control rounded-pill"
@@ -99,7 +102,7 @@
     </div>
 
     <!-- Card de Atenção -->
-    <div class="flex-grow-1 mt-3" style="max-width: 320px">
+    <div class="flex-grow-1 mt-3 justify-content-end" style="max-width: 320px">
       <div class="card-body">
         <div class="alert alert-info">
           <p class="card-text small">
@@ -121,6 +124,7 @@ import axios from 'axios'
 
 import { Info } from 'lucide-vue-next'
 import { reactive, ref } from 'vue'
+import Swal from 'sweetalert2'
 
 // Dados do paciente
 const paciente = reactive({
@@ -158,16 +162,31 @@ const handleSubmit = async () => {
   try {
     await axios.post('http://127.0.0.1:8000/api/pacientes', {
       ...paciente,
+      name: paciente.name.toUpperCase(),
+      nome_pai: paciente.nome_pai.toUpperCase(),
+      nome_mae: paciente.nome_mae.toUpperCase(),
+      endereco: paciente.endereco.toUpperCase(),
+      telefone: paciente.telefone.replace(/\D/g, ''),
+      cpf: paciente.cpf.replace(/\D/g, '')
     })
 
-    alert('Paciente cadastrado')
+    Swal.fire({
+      title: "Sucesso",
+      text: "Paciente cadastrado",
+      icon: "success"
+    });
 
     //limpa formulário
     Object.keys(paciente).forEach((k) => (paciente[k] = ''))
     idade.value = null
   } catch (error) {
     console.error(error.response?.data || error.message)
-    alert('Erro ao cadastrar')
+
+    Swal.fire({
+      title: "Erro",
+      text: "Erro ao cadastrar paciente",
+      icon: "error"
+    });
   }
 }
 </script>

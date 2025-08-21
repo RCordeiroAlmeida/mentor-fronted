@@ -24,6 +24,8 @@
     "lucide-vue-next": "^0.511.0",
     "maska": "^3.2.0",
     "pinia": "^3.0.1",
+    "sweetalert2": "^11.22.4",
+    "v-mask": "^2.3.0",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0",
     "vue-the-mask": "^0.11.1"
