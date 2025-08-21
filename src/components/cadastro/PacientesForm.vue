@@ -109,9 +109,13 @@
             <Info />
             Nesta tela são coletados apenas dados essenciais para agendamento da primeira consulta.
           </p>
-          <p class="small mb-0">
+          <p class="small">
             Informações complementares serão registradas
             <strong>após a entrevista inicial</strong> pelo psicólogo responsável.
+          </p>
+          <p class="small">
+            Para visualizar pacientes já cadastrados clique 
+            <router-link to="/prontuario">aqui</router-link>.
           </p>
         </div>
       </div>
