@@ -1,49 +1,18 @@
 <template>
-   <input
-      type="text"
-      class="form-control mb-3 "
-      placeholder="Busca por nome..."
-      v-model="termoBusca"
-    />
+  <input
+    type="text"
+    class="form-control mb-3"
+    placeholder="Busca por nome..."
+    v-model="termoBusca"
+  />
 
-  <div class="bg-white border rounded-3 shadow p-2">
-    <div class="table-responsive" style="max-height: 700px; overflow-y: auto;">
-      <table class="table table-striped table-hover">
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Data de Nascimento</th>
-            <th>Email</th>
-            <th>Telefone</th>
-            <th>CPF</th>
-            <th>...</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="p in pacientesFiltrados" :key="p.id">
-            <td>{{ p.name }}</td>
-            <td>{{ formatarData(p.data_nascimento) }}</td>
-            <td>{{ p.email || '-' }}</td>
-            <td>{{ mascararTelefone(p.telefone) || '-' }}</td>
-            <td>{{ p.cpf}}</td>
-            <td class="d-flex gap-2">
-              <button class="btn btn-primary btn-icon"><Eye/></button>
-              <button class="btn btn-warning btn-icon"><Pencil></Pencil></button>
-              <button class="btn btn-custom-primary btn-icon"><ClipboardPlusIcon></ClipboardPlusIcon></button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
+  <PacientesTable :pacientes="pacientesFiltrados" />
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import axios from 'axios'
-import { formatarData, mascararTelefone } from '@/utils/formatters'
-import { Eye, Pencil, ClipboardPlusIcon } from 'lucide-vue-next'
+import PacientesTable from '@/components/PacientesTable.vue'
 
 const termoBusca = ref('')
 const pacientes = ref([])
@@ -57,11 +26,8 @@ const fetchPacientes = async () => {
   }
 }
 
-onMounted(() => {
-  fetchPacientes()
-})
+onMounted(fetchPacientes)
 
-// Lista filtrada com base na busca
 const pacientesFiltrados = computed(() => {
   if (!termoBusca.value) return pacientes.value
   return pacientes.value.filter(p =>
@@ -69,13 +35,3 @@ const pacientesFiltrados = computed(() => {
   )
 })
 </script>
-
-<style scoped>
-.btn-icon {
-  padding: 4px 6px;
-}
-.btn-icon svg {
-  width: 16px;
-  height: 16px;
-}
-</style>

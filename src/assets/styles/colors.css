@@ -1,8 +1,12 @@
- :root {
+
+:root {
   --primary: #6b35e8 !important;
+  --primary-pastel: #895DED !important;
   --primary-hover: #3f13a4 !important;
+  --third: #a181eb;
   --black: #050505;
   --gray: #595959;
+  --gray-hover: #474747;
   --white: #fafafa;
   --success: #7BAE7F;
   --danger: #FF4B4B;
@@ -14,14 +18,38 @@
     color: var(--white);
   }
 
+  .btn-custom-secondary {
+    background-color: var(--primary-pastel);
+    border-color: var(--primary-pastel);
+    color: var(--white);
+  }
+
+  .btn-custom-third {
+    background-color: var(--third);
+    border-color: var(--third);
+    color: var(--white);
+  }
+
   .btn-custom-primary:hover {
     background-color: var(--primary-hover);
     border-color: var(--primary-hover);
   }
 
+  .btn-custom-secondary:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+    color: var(--white);
+  }
+
+  .btn-custom-third:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+    color: var(--white);
+  }
+
   .btn-custom-outlined {
   background-color: transparent;
-  border: 2px solid var(--primary);
+  border: 1px solid var(--primary);
   color: var(--primary);
   transition: all 0.3s ease;
   }
@@ -31,9 +59,27 @@
     border-color: var(--primary);
     color: var(--white);
   }
+
+  .text-custom-primary{
+    color: var(--primary)
+  }
+
+  .alert-custom-info {
+
+    color: var(--primary-hover);
+    border: 1px solid var(--primary-hover);
+    padding: 0.75rem 1rem;
+    border-radius: 0.375rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
 }
 
- /* :root {
+
+/*
+ # laranja
+:root {
   --primary: #eb5e28;
   --primary-hover: #252422;
   --black: #403d39;
@@ -42,17 +88,207 @@
   --success: #7BAE7F;
   --danger: #FF4B4B;
   --warning: #F8BF63;
-} */
+
+  .btn-custom-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: var(--white);
+  }
+
+  .btn-custom-secondary {
+    background-color: var(--gray);
+    border-color: var(--gray);
+    color: var(--white);
+  }
+
+  .btn-custom-primary:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+  }
+
+  .btn-custom-secondary:hover {
+    background-color: var(--gray);
+    border-color: var(--gray);
+    color: var(--white);
+  }
+
+  .btn-custom-outlined {
+  background-color: transparent;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  transition: all 0.3s ease;
+  }
+
+  .btn-custom-outlined:hover {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: var(--white);
+  }
+
+  .text-custom-primary{
+    color: var(--primary)
+  }
+
+  .alert-custom-info {
+    background-color: var(--primary-pastel);
+    color: var(--primary-hover);
+    border: 1px solid var(--primary-hover);
+    padding: 0.75rem 1rem;
+    border-radius: 0.375rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}*/
+
 
 /*
+# Verde
 :root {
-  --primary: #FF9505;
-  --primary-hover: #EC4E20;
+  --primary: #14755d !important;
+  --primary-pastel: #baebde !important;
+  --primary-hover: #064b3f !important;
+  --third: #6abf9e;
   --black: #000000;
   --gray: #353531;
+  --gray-hover: #474747;
   --white: #ffffff;
   --success: #7BAE7F;
   --danger: #FF4B4B;
   --warning: #F8BF63;
+
+
+  .btn-custom-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: var(--white);
+}
+
+.btn-custom-secondary {
+    background-color: var(--primary-pastel);
+    border-color: var(--primary-pastel);
+    color: var(--white);
+}
+
+.btn-custom-third {
+    background-color: var(--third);
+    border-color: var(--third);
+    color: var(--white);
+}
+
+
+.btn-custom-primary:hover,
+.btn-custom-secondary:hover,
+.btn-custom-third:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+    color: var(--white);
+}
+
+
+.btn-custom-outlined {
+    background-color: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    transition: all 0.3s ease;
+}
+
+.btn-custom-outlined:hover {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: var(--white);
+}
+
+
+.text-custom-primary {
+    color: var(--primary);
+}
+
+
+.alert-custom-info {
+    color: var(--primary-hover);
+    border: 1px solid var(--primary-hover);
+    padding: 0.75rem 1rem;
+    border-radius: 0.375rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
 } */
 
+/*
+ # Cinza
+:root{
+
+  --primary: #212121 !important;
+  --primary-pastel: #595959 !important;
+  --primary-hover: #000000 !important;
+  --third: #757575 !important;
+  --black: #000000 !important;
+  --gray: #353535 !important;
+  --gray-hover: #474747 !important;
+  --white: #ffffff !important;
+  --success: #4caf50 !important;
+  --danger: #f44336 !important;
+  --warning: #ff9800 !important;
+
+
+.btn-custom-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: var(--white);
+}
+
+.btn-custom-secondary {
+    background-color: var(--primary-pastel);
+    border-color: var(--primary-pastel);
+    color: var(--white);
+}
+
+.btn-custom-third {
+    background-color: var(--third);
+    border-color: var(--third);
+    color: var(--white);
+}
+
+
+.btn-custom-primary:hover,
+.btn-custom-secondary:hover,
+.btn-custom-third:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+    color: var(--white);
+}
+
+
+.btn-custom-outlined {
+    background-color: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    transition: all 0.3s ease;
+}
+
+.btn-custom-outlined:hover {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: var(--white);
+}
+
+
+.text-custom-primary {
+    color: var(--primary);
+}
+
+
+.alert-custom-info {
+    color: var(--primary-hover);
+    border: 1px solid var(--primary-hover);
+    padding: 0.75rem 1rem;
+    border-radius: 0.375rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+}
+ */
